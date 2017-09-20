@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "208143020073",
+    "firebase_url": "https://myrestaurants-ab2ba.firebaseio.com",
+    "project_id": "myrestaurants-ab2ba",
+    "storage_bucket": "myrestaurants-ab2ba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:208143020073:android:1942822b664f754a",
+        "android_client_info": {
+          "package_name": "com.example.mwas.myrestuarants"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "208143020073-mjadqmdkar36pqvbc8kl75t5tjm1d6if.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mwas.myrestuarants",
+            "certificate_hash": "a09b21f7ced07f083dd3d76e30949f8de0c1276c"
+          }
+        },
+        {
+          "client_id": "208143020073-8o9kh2mqvigbsdfv1613qcdvl8daudr1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtA_g3pgrKDR2x_K_BudS_dwf_2tp8W2A"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "208143020073-8o9kh2mqvigbsdfv1613qcdvl8daudr1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
