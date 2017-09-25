@@ -10,6 +10,8 @@ import com.example.mwas.myrestuarants.R;
 import com.example.mwas.myrestuarants.adapters.FirebaseRestaurantViewHolder;
 import com.example.mwas.myrestuarants.models.Restaurant;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -26,11 +28,17 @@ public class SavedRestaurantListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_restaurants);
         ButterKnife.bind(this);
 
         mRestaurantReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_RESTAURANTS);
+        setUpFirebaseAdapter();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+        mRestaurantReference = FirebaseDatabase
+                                .getInstance()
+                                .getReference(Constants.FIREBASE_CHILD_RESTAURANTS)
+                                .child(uid);
         setUpFirebaseAdapter();
     }
 
