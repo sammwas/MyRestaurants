@@ -1,6 +1,7 @@
 package com.example.mwas.myrestuarants.ui;
 
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -22,6 +23,7 @@ import com.example.mwas.myrestuarants.R;
 import com.example.mwas.myrestuarants.adapters.RestaurantListAdapter;
 import com.example.mwas.myrestuarants.models.Restaurant;
 import com.example.mwas.myrestuarants.services.YelpService;
+import com.example.mwas.myrestuarants.util.OnRestaurantSelectedListener;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -38,6 +40,7 @@ import okhttp3.Response;
 public class RestaurantListFragment extends Fragment {
 
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+    private OnRestaurantSelectedListener mOnRestaurantSelectedListener;
 
     private RestaurantListAdapter mAdapter;
     public ArrayList<Restaurant> mRestaurants = new ArrayList<>();
@@ -71,6 +74,15 @@ public class RestaurantListFragment extends Fragment {
 
         return view;
     }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try{
+            mOnRestaurantSelectedListener = (OnRestaurantSelectedListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + e.getMessage());
+        }
+    }
 
     public void getRestaurants(String location) {
         final YelpService yelpService = new YelpService();
@@ -92,7 +104,7 @@ public class RestaurantListFragment extends Fragment {
 
                     @Override
                     public void run() {
-                        mAdapter = new RestaurantListAdapter(getActivity(), mRestaurants);
+                        mAdapter = new RestaurantListAdapter(getActivity(), mRestaurants, mOnRestaurantSelectedListener);
                         // Line above states `getActivity()` instead of previous
                         // 'getApplicationContext()' because fragments do not have own context,
                         // must instead inherit it from corresponding activity.

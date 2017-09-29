@@ -4,6 +4,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.mwas.myrestuarants.Constants;
 import com.example.mwas.myrestuarants.R;
 import com.example.mwas.myrestuarants.adapters.RestaurantPagerAdapter;
 import com.example.mwas.myrestuarants.models.Restaurant;
@@ -19,16 +20,17 @@ public class RestaurantDetailActivity extends AppCompatActivity {
     @Bind(R.id.viewPager) ViewPager mViewPager;
     private RestaurantPagerAdapter adapterViewPager;
     ArrayList<Restaurant> mRestaurants = new ArrayList<>();
-
+    private String mSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_detail);
         ButterKnife.bind(this);
-        mRestaurants  = Parcels.unwrap(getIntent().getParcelableExtra("restaurants"));
-        int startingPosition = getIntent().getIntExtra("position", 0);
-        adapterViewPager = new RestaurantPagerAdapter(getSupportFragmentManager(), mRestaurants);
+        mSource = getIntent().getStringExtra(Constants.KEY_SOURCE);
+        mRestaurants  = Parcels.unwrap(getIntent().getParcelableExtra(Constants.EXTRA_KEY_RESTAURANTS));
+        int startingPosition = getIntent().getIntExtra(Constants.EXTRA_KEY_POSITION, 0);
+        adapterViewPager = new RestaurantPagerAdapter(getSupportFragmentManager(), mRestaurants, mSource);
         mViewPager.setAdapter(adapterViewPager);
         mViewPager.setCurrentItem(startingPosition);
 

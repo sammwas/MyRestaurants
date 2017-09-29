@@ -11,13 +11,10 @@ import butterknife.ButterKnife;
 public class SavedRestaurantListActivity extends AppCompatActivity {
 
 
-    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_restaurants);
-        ButterKnife.bind(this);
+        setContentView(R.layout.activity_saved_restaurant_list);
 
 
     }
